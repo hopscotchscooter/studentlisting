@@ -1,0 +1,22 @@
+<h1>Student Directory</h1>
+<%= link_to 'New Student Entry', new_entry_path %>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>E-mail Address</th>
+    <th>Gravatar Image</th>
+  </tr>
+  
+  <% @entries.each do |e| %>
+  <tr>
+    <td><%= e.first_name %></td>
+    <td><%= e.last_name %></td>
+    <td><%= e.email_address %></td>
+    <td><%= image_tag avatar_url(e) %></td>
+    <td><%= link_to 'Show', entry_path(e) %></td>
+    <td><%= link_to 'Edit', edit_entry_path(e) %></td>
+    <td><%= link_to 'Delete', entry_path(e), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>
