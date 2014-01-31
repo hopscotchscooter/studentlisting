@@ -1,5 +1,10 @@
-<h1>Student Directory</h1>
+<h1>Bueller Student Directory</h1>
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<br>
 <%= link_to 'New Student Entry', new_entry_path %>
+<br>
 <table>
   <tr>
     <th>First Name</th>

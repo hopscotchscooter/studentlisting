@@ -11,7 +11,7 @@ class EntriesController < ApplicationController
   
   def create
     @entry = Entry.new(params[:entry].permit(:first_name, :last_name, :email_address, :gravatarimage_image_url))
-   
+    flash[:notice] = "Entry successfully made!!"
     if @entry.save
        redirect_to @entry
     else
@@ -25,11 +25,12 @@ class EntriesController < ApplicationController
   
   def edit
     @entry = Entry.find(params[:id])
+    
   end
   
   def update
     @entry = Entry.find(params[:id])
-    
+    flash[:notice] = "Entry successfully edited!!"
     if @entry.update(params[:entry].permit(:first_name, :last_name, :email_address, :gravatarimage_image_url))
       redirect_to @entry
     else 
@@ -40,6 +41,7 @@ class EntriesController < ApplicationController
   def destroy
     @entry = Entry.find(params[:id])
     @entry.destroy
+    flash[:notice] = "Entry successfully deleted!!"
     redirect_to entries_path
   end
     

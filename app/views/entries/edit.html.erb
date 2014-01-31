@@ -1,5 +1,8 @@
 <h1>Student Entry Edit</h1>
-
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<br>
 <%= form_for :entry, url: entry_path(@entry), method: :patch do |f| %>
 <% if @entry.errors.any? %>
 <div id="error_explanation">
